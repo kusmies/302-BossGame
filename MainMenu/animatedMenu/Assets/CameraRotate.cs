@@ -32,8 +32,16 @@ public class CameraRotate : MonoBehaviour
         {
             transform.Rotate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
-        
 
+        if (Input.GetKey(KeyCode.B))
+        {
+            transform.Rotate(new Vector3(0,0,speed * Time.deltaTime));
+        }
+
+        if (Input.GetKey(KeyCode.V))
+        {
+            transform.Rotate(new Vector3(0, 0, -speed * Time.deltaTime));
+        }
 
     }
 }

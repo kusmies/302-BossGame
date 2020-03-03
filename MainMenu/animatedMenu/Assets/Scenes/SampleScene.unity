@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 72389717}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: -5, y: -15, z: 0}
-  m_LocalScale: {x: 100, y: 5, z: 100}
+  m_LocalScale: {x: 400, y: 5, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -771,7 +771,7 @@ Transform:
   m_GameObject: {fileID: 275595015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -69.3, y: -345.9, z: 0}
-  m_LocalScale: {x: 100, y: 5, z: 100}
+  m_LocalScale: {x: 200, y: 5, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1563,6 +1563,7 @@ GameObject:
   - component: {fileID: 649453773}
   - component: {fileID: 649453775}
   - component: {fileID: 649453774}
+  - component: {fileID: 649453776}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1629,6 +1630,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649453772}
   m_CullTransparentMesh: 1
+--- !u!114 &649453776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649453772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec82caa7743a8c247891f914a018d9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timescale: 1
+  target: {fileID: 649453773}
 --- !u!1 &696931780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,7 +2234,7 @@ Transform:
   m_GameObject: {fileID: 800757286}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -24, y: -507, z: 490.3}
-  m_LocalScale: {x: 100, y: 5, z: 100}
+  m_LocalScale: {x: 200, y: 5, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2746,7 +2761,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 3000
   field of view: 26.991467
   orthographic: 0
   orthographic size: 5
@@ -3999,9 +4014,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Play
-
-'
+  m_Text: Credit
 --- !u!222 &1395163190
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4192,7 +4205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503799278}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -474, y: -507, z: 0.7}
+  m_LocalPosition: {x: -962, y: -507, z: 0.7}
   m_LocalScale: {x: 100, y: 5, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
