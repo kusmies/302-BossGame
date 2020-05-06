@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
 
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
-    public GameObject compass;
+
     // Update is called once per frame
 
 
@@ -25,14 +25,21 @@ public class CameraFollow : MonoBehaviour
 
        
     {
-     
-      
 
-       
+
+        Vector3 desiredPosition = target.position + offset;
+
+        Vector3 smoothedPosition = Vector3.Lerp(Camera.main.transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        Camera.main.transform.position = smoothedPosition;
+
+        Camera.main.transform.LookAt(target);
+
+
+
 
     }
 
 
-  
+
 
 }
