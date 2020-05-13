@@ -9,14 +9,15 @@ public class state_machine : MonoBehaviour
     bool dead =false;
     public float timerTarget;
    public int movementStage;
-    public int speed1= 200;
-    public int speed2=300;
-    public int speed3=400;
+    public int speed1= 100;
+    public int speed2=150;
+    public int speed3=200;
     public int bossStage = 0;
     Vector3 moveDirection;
     public float damping = 1;
     Vector3 offset;
-    int hp = 10;
+    public int hp = 10;
+    public GameObject boss;
     public enemyMovement enemymovement;
     public Transform target;
     public EnemyShoot Gunscript;
@@ -46,7 +47,7 @@ public class state_machine : MonoBehaviour
         
         if (bossStage == 1)
         {
-            timerTarget = 5;
+            timerTarget = 3;
             if (movementStage == 0)
                 {
                 if (timer >= timerTarget)
@@ -72,7 +73,7 @@ public class state_machine : MonoBehaviour
                 }
                 if (movementStage == 2)
             {
-                timerTarget = 7;
+                timerTarget = 4;
 
                 if (timer >= timerTarget)
                 {
@@ -88,7 +89,7 @@ public class state_machine : MonoBehaviour
                 }
                 if (movementStage == 3)
                 {
-                timerTarget = 10;
+                timerTarget = 4;
 
                 if (timer >= timerTarget)
                 {
@@ -110,8 +111,6 @@ public class state_machine : MonoBehaviour
 
                     timer = 0;
                     movementStage = 0;
-                    hp--;
-                    Debug.Log(hp);
 
                 }
             }
@@ -119,7 +118,7 @@ public class state_machine : MonoBehaviour
         }
         else if (bossStage == 2)
         {
-            timerTarget = 3;
+            timerTarget = 2;
 
 
             if (movementStage == 0)
@@ -144,7 +143,7 @@ public class state_machine : MonoBehaviour
             }
             if (movementStage == 2)
             {
-                timerTarget = 7;
+                timerTarget = 2;
 
                 if (timer >= timerTarget)
                 {
@@ -158,7 +157,7 @@ public class state_machine : MonoBehaviour
             }
             if (movementStage == 3)
             {
-                timerTarget = 10;
+                timerTarget =4;
 
                 if (timer >= timerTarget)
                 {
@@ -178,8 +177,6 @@ public class state_machine : MonoBehaviour
 
                     timer = 0;
                     movementStage = 0;
-                    hp--;
-                    Debug.Log(hp);
 
                 }
             }
@@ -212,7 +209,7 @@ public class state_machine : MonoBehaviour
             }
             if (movementStage == 2)
             {
-                timerTarget = 7;
+                timerTarget = 4;
 
                 if (timer >= timerTarget)
                 {
@@ -225,7 +222,7 @@ public class state_machine : MonoBehaviour
             }
             if (movementStage == 3)
             {
-                timerTarget = 10;
+                timerTarget = 4;
 
                 if (timer >= timerTarget)
                 {
@@ -246,7 +243,6 @@ public class state_machine : MonoBehaviour
                     timer = 0;
                     movementStage = 0;
                     hp--;
-                    Debug.Log(hp);
                 }
             }
 
@@ -257,13 +253,20 @@ public class state_machine : MonoBehaviour
         if(hp<=10 && hp>=7)
         {
             bossStage = 1;
+
+
         }
         if (hp <= 6 && hp >= 4)
         {
+
+            boss.GetComponent<Renderer>().material.color = new Color32(200, 200, 100, 255);
+
             bossStage = 2;
         }
         if (hp <= 3 && hp >= 1)
         {
+            boss.GetComponent<Renderer>().material.color = new Color32(100, 50, 50, 255);
+
             bossStage = 3;
         }
         if (hp<=0)

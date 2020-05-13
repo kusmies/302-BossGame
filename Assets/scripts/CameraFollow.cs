@@ -7,42 +7,33 @@ public class CameraFollow: MonoBehaviour
 {
     
         public Transform target;
+    public Transform gunrotate;
     public GameObject player;
     public GameObject gun;
         public float damping = 1;
         Vector3 offset;
     float speed = 10;
 
+    public float rotateSpeed = 5;
+
     void Start()
-        {
-            offset = target.position - transform.position;
-        }
-
-        void LateUpdate()
-        {
-        if (target == null) return;
-        Vector3 look = target.position - transform.position;
-        look.Normalize();
-
-
-        if (Input.GetKey(KeyCode.E))
-
-        {
-            gun.transform.Rotate(0, speed * Time.deltaTime, 0);
-
-            player.transform.Rotate(0, speed * Time.deltaTime, 0);
-            transform.RotateAround(target.position, Vector3.up, speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            gun.transform.Rotate(0, -speed * Time.deltaTime, 0);
-
-            player.transform.Rotate(0, -speed * Time.deltaTime, 0);
-
-            transform.RotateAround(target.position, Vector3.down, speed * Time.deltaTime);
-        }
-        transform.rotation = Quaternion.LookRotation(look, Vector3.up);
+    {
+        offset = target.transform.position - transform.position;
     }
-    
+
+    void LateUpdate()
+    {
+        float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
+
+        target.transform.Rotate(0, horizontal, 0);
+        gun.transform.Rotate(0, horizontal, 0);
+
+        float desiredAngle = target.transform.eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
+        transform.position = target.transform.position - (rotation * offset);
+
+        transform.LookAt(target.transform);
+    }
+
 
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6267469482259219330}
   - component: {fileID: -2881013289874112229}
   - component: {fileID: 2347126124644673486}
+  - component: {fileID: 1101829580303468017}
   m_Layer: 0
   m_Name: enemyBullets
   m_TagString: Untagged
@@ -89,7 +90,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4785056471243889176}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -122,3 +123,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0318fe0182fdf9c46a66b9ef56e7c699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1101829580303468017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785056471243889176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654f2dc544af3bf4ea7fd8bf118ef365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 50
