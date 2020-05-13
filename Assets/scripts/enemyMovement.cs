@@ -9,10 +9,10 @@ public class enemyMovement : MonoBehaviour
 private float RotateSpeed = 5f;
 public float Radius = 2.1f;
 
-private Vector2 _centre;
+private Vector3 _centre;
 private float _angle;
 
-public enum Direction { None, UpLeft, Up, UpRight, Right, Left, Down, DownRight, DownLeft };
+public enum Direction { None, UpLeft, Up, UpRight, Right, Left, Down, DownRight, DownLeft,Forward,Backward };
 public Direction EnemyDirection;
 
 public enum MoveType { linear, Sine, SineVert, SineHoriz, Circle };
@@ -61,8 +61,17 @@ void Update()
             {
             EnemyBody.velocity = Vector3.down * speed * Time.deltaTime;
         }
+            else if (EnemyDirection == Direction.Forward)
+            {
+                EnemyBody.velocity = Vector3.forward * speed * Time.deltaTime;
+            }
 
-        else if (EnemyDirection == Direction.DownLeft)
+            else if (EnemyDirection == Direction.Backward)
+            {
+                EnemyBody.velocity = Vector3.back * speed * Time.deltaTime;
+            }
+
+            else if (EnemyDirection == Direction.DownLeft)
         {
             EnemyBody.velocity = (Vector3.down + Vector3.left) * speed * Time.deltaTime;
         }
@@ -76,20 +85,20 @@ void Update()
     if (EnemyMovementType == MoveType.SineVert)
     {
         //EnemyBody.velocity += Vector2.up * Mathf.Sin(Time.time * frequency * magnitude);            
-        EnemyBody.velocity = new Vector2(EnemyBody.velocity.x, Mathf.Sin(Time.time * frequency * magnitude));
+        EnemyBody.velocity = new Vector3(EnemyBody.velocity.x, Mathf.Sin(Time.time * frequency * magnitude));
     }
     if (EnemyMovementType == MoveType.SineHoriz)
     {
         //EnemyBody.velocity += Vector2.left * Mathf.Sin(Time.time * frequency * magnitude);
-        EnemyBody.velocity = new Vector2(Mathf.Sin(Time.time * frequency * magnitude), EnemyBody.velocity.y);
+        EnemyBody.velocity = new Vector3(Mathf.Sin(Time.time * frequency * magnitude), EnemyBody.velocity.y);
     }
 
 
     if (EnemyMovementType == MoveType.Sine)
     {
 
-        //transform.position = (Vector2.up * Mathf.Sin(Time.time * frequency) * magnitude) * Time.deltaTime * speed1;
-        // EnemyBody.velocity = (Vector2.left * Mathf.Sin(Time.time * frequency) * magnitude) * Time.deltaTime * SPEED;
+        transform.position = (Vector3.up * Mathf.Sin(Time.time * frequency) * magnitude) * Time.deltaTime * speed;
+        EnemyBody.velocity = (Vector3.left * Mathf.Sin(Time.time * frequency) * magnitude) * Time.deltaTime * speed;
         if (EnemyDirection == Direction.Left)
         {
             EnemyBody.velocity = ((Vector3.up * Mathf.Sin(Time.time * frequency * magnitude) + Vector3.left) * speed* Time.deltaTime);
@@ -147,7 +156,15 @@ public void MoveLeft()
 {
     EnemyDirection = Direction.Left;
 }
-public void MoveRight()
+    public void MoveForward()
+    {
+        EnemyDirection = Direction.Forward;
+    }
+    public void MovebackWard()
+    {
+        EnemyDirection = Direction.Backward;
+    }
+    public void MoveRight()
 {
     EnemyDirection = Direction.Right;
 }

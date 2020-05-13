@@ -1,45 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollow: MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+        public Transform target;
+    public GameObject player;
+    public GameObject gun;
+        public float damping = 1;
+        Vector3 offset;
+    float speed = 10;
+
+    void Start()
+        {
+            offset = target.position - transform.position;
+        }
+
+        void LateUpdate()
+        {
+        if (target == null) return;
+        Vector3 look = target.position - transform.position;
+        look.Normalize();
 
 
-    GameObject creditbutton;
+        if (Input.GetKey(KeyCode.E))
 
-    public Transform target;
+        {
+            gun.transform.Rotate(0, speed * Time.deltaTime, 0);
 
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+            player.transform.Rotate(0, speed * Time.deltaTime, 0);
+            transform.RotateAround(target.position, Vector3.up, speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            gun.transform.Rotate(0, -speed * Time.deltaTime, 0);
 
-    // Update is called once per frame
+            player.transform.Rotate(0, -speed * Time.deltaTime, 0);
 
-
-
-
-
-    void FixedUpdate()
-
-
-       
-    {
-
-
-        Vector3 desiredPosition = target.position + offset;
-
-        Vector3 smoothedPosition = Vector3.Lerp(Camera.main.transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-        Camera.main.transform.position = smoothedPosition;
-
-        Camera.main.transform.LookAt(target);
-
-
-
-
+            transform.RotateAround(target.position, Vector3.down, speed * Time.deltaTime);
+        }
+        transform.rotation = Quaternion.LookRotation(look, Vector3.up);
     }
-
-
-
+    
 
 }

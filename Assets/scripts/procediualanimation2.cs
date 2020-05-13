@@ -20,14 +20,14 @@ public class procediualanimation2 : MonoBehaviour
     {
         float time = (Time.time + sinWaveOffset * Mathf.PI) * sinWaveSpeed;
         float offsetZ = Mathf.Sin(time);
-        float offsetX = Mathf.Cos(time);
+        float offsetY = Mathf.Cos(time);
 
-        if (offsetX < 0) offsetX = 0;
+        if (offsetY < 0) offsetY = 0;
 
 
         Vector3 finalPosition = startingPosition;
 
-        finalPosition.x += offsetX;
+        finalPosition.y += offsetY;
 
         finalPosition.z += offsetZ;
 
